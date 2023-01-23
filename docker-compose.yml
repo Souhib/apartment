@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: "${APARTMENT_DB_USERNAME}"
+      POSTGRES_PASSWORD: "${APARTMENT_DB_PASSWORD}"
+      PGDATA: /data/postgres
+    networks:
+      - apartment
+    ports:
+      - 5432:5432
+    volumes:
+       - ./postgres:/data/postgres
+    restart: unless-stopped
+
+  api:
+    container_name: apartment_api
+    build: .
+    ports:
+      - 43122:5000
+    expose:
+      - 43122
+    networks:
+      - apartment
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+
+networks:
+  apartment:
+    driver: bridge

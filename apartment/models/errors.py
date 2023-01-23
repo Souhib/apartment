@@ -1,0 +1,2 @@
+class NoResultScrapping(AttributeError):
+    pass
