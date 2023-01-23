@@ -27,8 +27,9 @@ RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
     && pip install psycopg2
 
-COPY ["main.py", ".env", "/app/"]
+COPY ["main.py", ".env", "static/", "/app/"]
 COPY ["apartment", "/app/apartment/"]
+COPY ["./static/indicateurs-loyers-appartements.csv", "/app/static/indicateurs-loyers-appartements.csv"]
 
 WORKDIR /app
 

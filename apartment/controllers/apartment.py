@@ -1,6 +1,5 @@
 import bs4
 import requests
-from fastapi import HTTPException
 from sqlmodel import Session, select
 from unidecode import unidecode
 

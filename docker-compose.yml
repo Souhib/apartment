@@ -8,11 +8,10 @@ services:
     environment:
       POSTGRES_USER: "${APARTMENT_DB_USERNAME}"
       POSTGRES_PASSWORD: "${APARTMENT_DB_PASSWORD}"
+      POSTGRES_DB: "apartment"
       PGDATA: /data/postgres
     networks:
       - apartment
-    ports:
-      - 5432:5432
     volumes:
        - ./postgres:/data/postgres
     restart: unless-stopped
